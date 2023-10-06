@@ -1,26 +1,35 @@
 <div class="card text-bg-info mb-3" style="max-width: 60rem;">
-    <div class="card-header">Clients</div>
-    <div class="card-body">
-        <h5 class="card-title">Info clients</h5>
-        <table class="table">
-            <thead>
-              <tr>
-                <th scope="col">id</th>
-                <th scope="col">Nombre</th>
-                <th scope="col">Lastname</th>
-                <th scope="col">Create At</th>
-                <th scope="col">Email</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let client of clients">
-                <th scope="row">{{client.id}}</th>
-                <th scope="row">{{client.name}}</th>
-                <th scope="row">{{client.lastname}}</th>
-                <th scope="row">{{client.createAt}}</th>
-                <th scope="row">{{client.email}}</th>
-              </tr>
-            </tbody>
-          </table>
+  <div class="card-header">Clients</div>
+  <div class="card-body">
+    <h5 class="card-title">Info clients</h5>
+    <div class="my-2 text-left">
+      <button class="btn btn-rounded btn-primary" type="button" [routerLink]="['/clients/form']">Add Client</button>
     </div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">id</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Lastname</th>
+          <th scope="col">Create At</th>
+          <th scope="col">Email</th>
+          <th scope="col">Editar</th>
+          <th scope="col">Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let client of clients">
+          <th scope="row">{{client.id}}</th>
+          <th scope="row">{{client.name}}</th>
+          <th scope="row">{{client.lastname}}</th>
+          <th scope="row">{{client.createAt}}</th>
+          <th scope="row">{{client.email}}</th>
+          <th scope="row"><button type="button" [routerLink]="['/clients/form', client.id]"
+              class="btn btn-primary">E</button></th>
+          <th scope="row"><button type="button" (click)="delete(client.id)"
+              class="btn btn-danger">D</button></th>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
